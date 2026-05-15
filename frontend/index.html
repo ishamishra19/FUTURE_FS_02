@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Lead Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Client Lead Management System</h1>
+        <p>Mini CRM dashboard for managing website leads.</p>
+      </header>
+
+      <section id="authCard" class="card">
+        <h2>Admin Login</h2>
+        <form id="loginForm" class="form-grid">
+          <input type="email" id="loginEmail" placeholder="Admin email" required />
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <button type="submit">Login</button>
+        </form>
+      </section>
+
+      <section id="crmSection" class="hidden">
+        <div class="toolbar card">
+          <h2>Leads</h2>
+          <button id="logoutBtn" class="secondary">Logout</button>
+        </div>
+
+        <section class="card">
+          <h3>Add New Lead</h3>
+          <form id="leadForm" class="form-grid lead-grid">
+            <input type="text" id="leadName" placeholder="Name" required />
+            <input type="email" id="leadEmail" placeholder="Email" required />
+            <input type="text" id="leadSource" placeholder="Source (Website/Referral)" required />
+            <select id="leadStatus">
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="converted">Converted</option>
+            </select>
+            <button type="submit">Create Lead</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <h3>Lead List</h3>
+          <div class="filter-grid">
+            <input type="text" id="searchInput" placeholder="Search by name/email" />
+            <select id="filterStatus">
+              <option value="">All Statuses</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="converted">Converted</option>
+            </select>
+            <input type="text" id="filterSource" placeholder="Filter by source (e.g., Website)" />
+          </div>
+          <div id="leadList" class="lead-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <div id="editModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Edit Lead</h3>
+          <button id="closeEditModalBtn" type="button" class="secondary">Close</button>
+        </div>
+        <form id="editLeadForm" class="form-grid">
+          <input type="hidden" id="editLeadId" />
+          <input type="text" id="editLeadName" placeholder="Name" required />
+          <input type="email" id="editLeadEmail" placeholder="Email" required />
+          <input type="text" id="editLeadSource" placeholder="Source" required />
+          <select id="editLeadStatus" required>
+            <option value="new">New</option>
+            <option value="contacted">Contacted</option>
+            <option value="converted">Converted</option>
+          </select>
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
